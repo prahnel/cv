@@ -1,0 +1,21 @@
+<h2>Profile Details</h2>
+
+<p><strong>Name:</strong> <%= @profile.name %></p>
+<p><strong>Email:</strong> <%= @profile.email %></p>
+<p><strong>Phone:</strong> <%= @profile.phone %></p>
+<p><strong>Address:</strong> <%= @profile.address %></p>
+<p><strong>Summary:</strong> <%= @profile.summary %></p>
+
+<h3>Education</h3>
+<% @profile.educations.each do |education| %>
+  <div>
+    <p><strong>Institution:</strong> <%= education.institution %></p>
+    <p><strong>Degree:</strong> <%= education.degree %></p>
+    <p><strong>Start Date:</strong> <%= education.start_date %></p>
+    <p><strong>End Date:</strong> <%= education.end_date %></p>
+    <p><strong>Summary:</strong> <%= education.summary %></p>
+  </div>
+<% end %>
+
+<%= link_to 'Edit Profile', edit_profile_path(@profile), class: 'btn btn-primary' %>
+<%= link_to 'Download CV as PDF', generate_cv_path, class: 'btn btn-success' %>

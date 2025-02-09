@@ -1,0 +1,45 @@
+<h1>Welcome to CV Builder</h1>
+
+<% if user_signed_in? %>
+  <p>Welcome, <%= current_user.email %>!</p>
+  <%= link_to "Go to Profile", profile_path(current_user.profile) %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <div>
+    <h2>Login</h2>
+    <%= form_with model: User.new, url: new_user_session_path, local: true do |f| %>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.submit "Login" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Sign Up</h2>
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div>
+        <%= f.submit "Sign Up" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

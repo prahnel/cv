@@ -1,0 +1,88 @@
+<%= form_with model: @profile, local: true do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div>
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+  </div>
+
+  <div>
+    <%= f.label :summary %>
+    <%= f.text_area :summary %>
+  </div>
+
+  <h3>Education</h3>
+  <div id="educations">
+    <%= f.fields_for :educations do |education_form| %>
+      <div class="education-entry">
+        <div>
+          <%= education_form.label :institution, "Institution" %>
+          <%= education_form.text_field :institution %>
+        </div>
+        <div>
+          <%= education_form.label :degree, "Degree" %>
+          <%= education_form.text_field :degree %>
+        </div>
+        <div>
+          <%= education_form.label :start_date, "Start Date" %>
+          <%= education_form.date_field :start_date %>
+        </div>
+        <div>
+          <%= education_form.label :end_date, "End Date" %>
+          <%= education_form.date_field :end_date %>
+        </div>
+        <div>
+          <%= education_form.label :summary, "Summary" %>
+          <%= education_form.text_area :summary %>
+        </div>
+        <%= link_to "Remove", "#", class: "remove-education", data: { target: "education-entry" } %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Add Education", "#", id: "add-education" %>
+
+  <div>
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>
+
+<!-- Hidden Education Template -->
+<template id="education-template">
+  <div class="education-entry">
+    <div>
+      <label>Institution</label>
+      <input type="text" name="profile[educations_attributes][][institution]">
+    </div>
+    <div>
+      <label>Degree</label>
+      <input type="text" name="profile[educations_attributes][][degree]">
+    </div>
+    <div>
+      <label>Start Date</label>
+      <input type="date" name="profile[educations_attributes][][start_date]">
+    </div>
+    <div>
+      <label>End Date</label>
+      <input type="date" name="profile[educations_attributes][][end_date]">
+    </div>
+    <div>
+      <label>Summary</label>
+      <textarea name="profile[educations_attributes][][summary]"></textarea>
+    </div>
+    <a href="#" class="remove-education">Remove</a>
+  </div>
+</template>
