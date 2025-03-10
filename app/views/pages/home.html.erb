@@ -2,8 +2,16 @@
 
 <% if user_signed_in? %>
   <p>Welcome, <%= current_user.email %>!</p>
+  <% if current_user.profile.present? %>
   <%= link_to "Go to Profile", profile_path(current_user.profile) %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Create Profile", new_profile_path %>
+<% end %>
+
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+  <div>
+
 <% else %>
   <div>
     <h2>Login</h2>
