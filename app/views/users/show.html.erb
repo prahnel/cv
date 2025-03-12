@@ -1,0 +1,19 @@
+<h1><%= current_user.name %>'s Profile</h1>
+
+<p>Email: <%= current_user.email %></p>
+<p>Address: <%= current_user.address %></p>
+<p>Phone: <%= current_user.phone %></p>
+<p>LinkedIn: <%= current_user.linkedin %></p>
+<p>GitHub: <%= current_user.github %></p>
+
+<h2>CVs</h2>
+<ul>
+  <% current_user.cvs.each do |cv| %>
+    <li>
+      <%= link_to cv.name, user_cv_path(current_user, cv) %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Create New CV", new_user_cv_path(current_user) %>
+
+<%= link_to "Edit Profile", edit_user_registration_path %>

@@ -10,28 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_09_195359) do
-  create_table "cvs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2025_03_10_191834) do
+  create_table "curr_vits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name"
-    t.string "email"
-    t.string "phone"
-    t.text "experience"
-    t.string "summary"
-    t.string "text"
+    t.text "skills"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_curr_vits_on_user_id"
+  end
+
+  create_table "cvs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.text "skills"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cvs_on_user_id"
   end
 
   create_table "educations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "profile_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "institution"
     t.string "degree"
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_educations_on_profile_id"
+    t.string "school"
+    t.integer "cv_id"
+    t.index ["cv_id"], name: "index_educations_on_cv_id"
   end
 
   create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -66,11 +73,28 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_09_195359) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "address"
+    t.string "phone"
+    t.string "linkedin"
+    t.string "github"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "educations", "profiles"
-  add_foreign_key "educations", "users", column: "profile_id"
+  create_table "work_experiences", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "cv_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.string "summary"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_work_experiences_on_cv_id"
+  end
+
+  add_foreign_key "curr_vits", "users"
+  add_foreign_key "cvs", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "work_experiences", "cvs"
 end

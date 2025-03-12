@@ -1,0 +1,31 @@
+<h1><%= @cv.new_record? ? 'Create New CV' : 'Edit CV' %></h1>
+
+<%= form_with(model: [@user, @cv], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :skills %><br>
+    <%= form.text_area :skills %>
+  </p>
+
+  <h2>Education</h2>
+  <div id="educations">
+    <%= form.fields_for :educations do |education_form| %>
+      <%= render 'education_fields', f: education_form %>
+    <% end %>
+  </div>
+  <p><%= link_to_add_association 'Add Education', form, :educations %></p>
+
+  <h2>Work Experience</h2>
+  <div id="work_experiences">
+    <%= form.fields_for :work_experiences do |work_experience_form| %>
+      <%= render 'work_experience_fields', f: work_experience_form %>
+    <% end %>
+  </div>
+  <p><%= link_to_add_association 'Add Work Experience', form, :work_experiences %></p>
+
+  <p><%= form.submit %></p>
+<% end %>

@@ -1,0 +1,25 @@
+<h1><%= @cv.name %></h1>
+<%= link_to 'Edit', edit_user_cv_path(@user, @cv) %>
+<p>Skills: <%= @cv.skills %></p>
+
+<h2>Education</h2>
+<ul>
+  <% @cv.educations.each do |education| %>
+    <li>
+      <p>Start: <%= education.start_date %>, End: <%= education.end_date %></p>
+      <p>Summary: <%= education.summary %></p>
+      <p>Details: <%= education.degree %></p>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Work Experience</h2>
+<ul>
+  <% @cv.work_experiences.each do |experience| %>
+    <li>
+      <p>Start: <%= experience.start_date %>, End: <%= experience.end_date %></p>
+      <p>Summary: <%= experience.summary %></p>
+      <p>Details: <%= experience.details %></p>
+    </li>
+  <% end %>
+</ul>
