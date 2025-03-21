@@ -14,3 +14,45 @@
  *= require_self
  */
 @import "flatpickr/dist/flatpickr.css";
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Stack header, container, footer vertically */
+}
+
+header, footer {
+  background-color: #fgbfgb;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.container {
+  display: flex; /* Sidebar and content in a row */
+  flex: 1; /* Allow container to take up remaining vertical space */
+}
+
+.sidebar {
+  width: 5cm;
+  background-color: #e0e0e0;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 100%; /* Sidebar spans full height of container */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/*
+ *= require_tree .
+ *= require_self
+ *= require education_fields
+ */

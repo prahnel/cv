@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_10_191834) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_21_202617) do
+  create_table "basic_informations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.text "linkedin"
+    t.text "github"
+    t.bigint "cv_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cv_id"], name: "index_basic_informations_on_cv_id"
+  end
+
   create_table "curr_vits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
@@ -66,19 +80,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_10_191834) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.text "address"
-    t.string "phone"
-    t.string "linkedin"
-    t.string "github"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -87,12 +94,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_10_191834) do
     t.date "start_date"
     t.date "end_date"
     t.string "summary"
-    t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company"
+    t.string "position"
     t.index ["cv_id"], name: "index_work_experiences_on_cv_id"
   end
 
+  add_foreign_key "basic_informations", "cvs"
   add_foreign_key "curr_vits", "users"
   add_foreign_key "cvs", "users"
   add_foreign_key "profiles", "users"

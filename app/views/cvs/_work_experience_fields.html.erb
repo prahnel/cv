@@ -1,23 +1,19 @@
 <div class="nested-fields">
-  <p>
-    <%= f.label :start_date %><br>
-    <%= f.date_field :start_date %>
-  </p>
 
-  <p>
-    <%= f.label :end_date %><br>
-    <%= f.date_field :end_date %>
-  </p>
+  <%= f.label :start_date, "Start Date" %>
+  <%= f.text_field :start_date, class: 'datepicker' %>
 
-  <p>
-    <%= f.label :summary %><br>
-    <%= f.text_field :summary %>
-  </p>
+  <%= f.label :end_date, "End Date" %>
+  <%= f.text_field :end_date, class: 'datepicker' %>
 
-  <p>
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
-  </p>
+  <%= f.label :company, "Company" %>
+  <%= f.text_field :company %>
+
+  <%= f.label :position, "Position" %>
+  <%= f.text_field :position %>
+
+  <%= f.label :summary, "Summary" %>
+  <%= f.text_area :summary %>
 
   <%= f.hidden_field :_destroy %>
   <%= link_to "Remove", '#', class: "remove_fields" %>

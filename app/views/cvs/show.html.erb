@@ -18,8 +18,9 @@
   <% @cv.work_experiences.each do |experience| %>
     <li>
       <p>Start: <%= experience.start_date %>, End: <%= experience.end_date %></p>
+      <p>Company: <%= experience.company %>Position: <%= experience.position %></p>
       <p>Summary: <%= experience.summary %></p>
-      <p>Details: <%= experience.details %></p>
+
     </li>
   <% end %>
 </ul>

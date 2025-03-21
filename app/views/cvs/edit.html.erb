@@ -1,15 +1,12 @@
 <h1><%= @cv.new_record? ? 'Create New CV' : 'Edit CV' %></h1>
 
 <%= form_with(model: [@user, @cv], local: true) do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :skills %><br>
-    <%= form.text_area :skills %>
-  </p>
+<h2>Basic information</h2>
+<div id="basic_informations">
+  <%= form.fields_for :basic_informations do |basic_information_form| %>
+    <%= render 'basic_information_fields', f: basic_information_form %>
+  <% end %>
+</div>
 
   <h2>Education</h2>
   <div id="educations">

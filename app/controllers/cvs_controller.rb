@@ -1,10 +1,11 @@
 class CvsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
-  before_action :set_cv, only: [:show, :edit, :update] 
+  before_action :set_cv, only: [:show, :edit, :update]
 
   def new
     @cv = @user.cvs.build
+    @cv.basic_information.build
     2.times { @cv.educations.build }
     2.times { @cv.work_experiences.build }
   end

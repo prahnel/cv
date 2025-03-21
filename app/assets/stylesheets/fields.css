@@ -1,0 +1,59 @@
+.nested-fields {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.nested-fields label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.nested-fields input[type="text"],
+.nested-fields textarea {
+  margin-top: 0.25rem;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+}
+
+.nested-fields input[type="text"]:focus,
+.nested-fields textarea:focus {
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.5);
+  outline: none;
+}
+
+.nested-fields .remove-fields {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #b91c1c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease-in-out;
+}
+
+.nested-fields .remove-fields:hover {
+  background-color: #fecaca;
+}
+
+.nested-fields .remove-fields:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.5);
+}

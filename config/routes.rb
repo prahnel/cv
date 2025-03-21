@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # config/routes.rb
     Rails.application.routes.draw do
       get 'cv_data/:user_id', to: 'cv_data#show'
+      # Add your test route here:
+      get '/test_tailwind', to: 'pages#test_tailwind'
       # ... other routes ...
     end
 end
